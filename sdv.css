@@ -13,44 +13,54 @@
 
 :root[data-color-scheme="light"] {
   color-scheme: light;
-  --body: #dfe7d5;
-  --neutral: #f8f1df;
-  --neutralDark: #eee4cd;
-  --neutralDarker: #ddd2b8;
-  --accentClr: #39746f;
-  --accentClrDark: #b85d3d;
-  --textColor: #4c5245;
-  --textColorAccent: #243e38;
-  --border: 1px solid rgba(71, 79, 60, .18);
-  --sdv-paper: #f8f1df;
-  --sdv-paper-deep: #eadcbd;
-  --sdv-ink: #263f39;
-  --sdv-teal: #33736f;
-  --sdv-rust: #b55b3c;
-  --sdv-gold: #d3a443;
-  --sdv-leaf: #778b50;
-  --sdv-shadow: rgba(46, 58, 42, .16);
+  --body: #dcefdc;
+  --neutral: #fff9e9;
+  --neutralDark: #f4ebd2;
+  --neutralDarker: #e4d8b9;
+  --accentClr: #287e78;
+  --accentClrDark: #dd6848;
+  --textColor: #53645a;
+  --textColorAccent: #234a45;
+  --border: 1px solid rgba(52, 93, 74, .18);
+  --sdv-paper: #fff9e9;
+  --sdv-paper-deep: #f2dfb5;
+  --sdv-ink: #234a45;
+  --sdv-teal: #287e78;
+  --sdv-rust: #dd6848;
+  --sdv-gold: #efb94f;
+  --sdv-leaf: #80a957;
+  --sdv-sky: #87c8c0;
+  --sdv-hero-from: #fff9e9;
+  --sdv-hero-to: #d8efe2;
+  --sdv-hero-wash: rgba(255, 249, 233, .96);
+  --sdv-hero-line: rgba(35, 74, 69, .26);
+  --sdv-shadow: rgba(47, 86, 63, .16);
 }
 
 :root[data-color-scheme="dark"] {
   color-scheme: dark;
-  --body: #202c28;
-  --neutral: #2c3933;
-  --neutralDark: #25322d;
-  --neutralDarker: #36463e;
-  --accentClr: #76aaa0;
-  --accentClrDark: #df8a63;
-  --textColor: #cdd5ca;
-  --textColorAccent: #f1ead8;
-  --border: 1px solid rgba(229, 224, 201, .13);
-  --sdv-paper: #e9dec6;
-  --sdv-paper-deep: #d5c39f;
-  --sdv-ink: #213b36;
-  --sdv-teal: #397c76;
-  --sdv-rust: #b85e40;
-  --sdv-gold: #d2a444;
-  --sdv-leaf: #7f9257;
-  --sdv-shadow: rgba(0, 0, 0, .32);
+  --body: #152b35;
+  --neutral: #203c43;
+  --neutralDark: #19343c;
+  --neutralDarker: #2a4a4f;
+  --accentClr: #79cbbb;
+  --accentClrDark: #f08b68;
+  --textColor: #c8ddd5;
+  --textColorAccent: #fff3cf;
+  --border: 1px solid rgba(189, 229, 211, .16);
+  --sdv-paper: #203c43;
+  --sdv-paper-deep: #294a4e;
+  --sdv-ink: #f8ebc8;
+  --sdv-teal: #79cbbb;
+  --sdv-rust: #f08b68;
+  --sdv-gold: #f1c65f;
+  --sdv-leaf: #a3c875;
+  --sdv-sky: #518f9a;
+  --sdv-hero-from: #172f3a;
+  --sdv-hero-to: #31535a;
+  --sdv-hero-wash: rgba(23, 47, 58, .97);
+  --sdv-hero-line: rgba(190, 228, 211, .25);
+  --sdv-shadow: rgba(3, 15, 19, .4);
 }
 
 html {
@@ -63,7 +73,7 @@ body {
   color: var(--textColor);
   background-color: var(--body);
   background-image:
-    radial-gradient(circle at 15% 5%, rgba(255, 255, 255, .35), transparent 25rem),
+    radial-gradient(circle at 15% 5%, color-mix(in srgb, var(--sdv-sky) 28%, transparent), transparent 25rem),
     repeating-linear-gradient(0deg, transparent 0 3px, rgba(64, 72, 51, .018) 3px 4px),
     linear-gradient(135deg, rgba(119, 139, 80, .09), transparent 45%);
   background-attachment: fixed;
@@ -157,9 +167,9 @@ textarea {
   border-radius: 16px 16px 7px 7px;
   color: var(--sdv-ink);
   background:
-    linear-gradient(90deg, rgba(248, 241, 223, .98) 0%, rgba(248, 241, 223, .94) 43%, rgba(248, 241, 223, .55) 66%, rgba(248, 241, 223, .2) 100%),
-    var(--sdv-paper);
-  box-shadow: inset 0 0 0 1px rgba(67, 76, 54, .2);
+    linear-gradient(90deg, var(--sdv-hero-wash) 0%, color-mix(in srgb, var(--sdv-hero-wash) 90%, transparent) 42%, color-mix(in srgb, var(--sdv-hero-wash) 48%, transparent) 67%, transparent 100%),
+    linear-gradient(135deg, var(--sdv-hero-from), var(--sdv-hero-to));
+  box-shadow: inset 0 0 0 1px var(--sdv-hero-line);
 }
 
 #header.sdv-hero::before,
@@ -172,7 +182,7 @@ textarea {
 
 #header.sdv-hero::before {
   inset: 15px;
-  border: 1px solid rgba(55, 78, 64, .25);
+  border: 1px solid var(--sdv-hero-line);
   border-radius: 11px 45px 11px 45px;
 }
 
@@ -208,7 +218,7 @@ textarea {
   width: clamp(240px, 30vw, 380px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: rgba(211, 164, 67, .22);
+  background: color-mix(in srgb, var(--sdv-gold) 30%, transparent);
   box-shadow:
     0 0 0 20px rgba(211, 164, 67, .055),
     0 0 0 42px rgba(211, 164, 67, .035);
@@ -270,7 +280,7 @@ textarea {
 }
 
 .sdv-hero__text {
-  color: #667064;
+  color: color-mix(in srgb, var(--sdv-ink) 72%, transparent);
   font: 400 clamp(13px, 1.2vw, 16px)/1.7 var(--sdv-title);
   font-style: italic;
 }
@@ -284,10 +294,10 @@ textarea {
 
 .sdv-hero__keywords span {
   padding: 5px 9px;
-  border: 1px solid rgba(51, 115, 111, .28);
+  border: 1px solid color-mix(in srgb, var(--sdv-teal) 38%, transparent);
   border-radius: 99px;
   color: var(--sdv-teal);
-  background: rgba(255, 255, 255, .23);
+  background: color-mix(in srgb, var(--sdv-paper) 40%, transparent);
   font-size: 8px;
   font-weight: 800;
   letter-spacing: .12em;
@@ -310,7 +320,7 @@ textarea {
   content: "";
   position: absolute;
   z-index: -1;
-  border: 1px solid rgba(51, 115, 111, .25);
+  border: 1px solid color-mix(in srgb, var(--sdv-teal) 34%, transparent);
   border-radius: 50%;
 }
 
@@ -337,6 +347,10 @@ textarea {
   transition: transform .6s ease;
 }
 
+[data-color-scheme="dark"] .sdv-hero__picture img {
+  filter: saturate(.9) brightness(.9) contrast(1.05) drop-shadow(0 22px 18px rgba(0, 0, 0, .28));
+}
+
 .sdv-hero:hover .sdv-hero__picture img {
   transform: translateY(-6px) rotate(-.4deg);
 }
@@ -347,7 +361,7 @@ textarea {
   width: 78%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 250, 224, .9), rgba(211, 164, 67, .16) 58%, transparent 60%);
+  background: radial-gradient(circle, color-mix(in srgb, var(--sdv-paper-deep) 86%, white), color-mix(in srgb, var(--sdv-gold) 21%, transparent) 58%, transparent 60%);
 }
 
 .sdv-hero__seal {
@@ -362,7 +376,7 @@ textarea {
   border: 1px solid rgba(184, 93, 61, .5);
   border-radius: 50%;
   color: var(--sdv-rust);
-  background: rgba(248, 241, 223, .74);
+  background: color-mix(in srgb, var(--sdv-paper) 82%, transparent);
   font-size: 7px;
   font-weight: 800;
   letter-spacing: .12em;
